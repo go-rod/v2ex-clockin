@@ -77,7 +77,9 @@ func clockIn() {
 	browser := newBrowser(true)
 	defer browser.Close()
 
-	page := browser.Timeout(time.Minute).Page("https://www.v2ex.com/mission/daily")
+	page := browser.Timeout(time.Minute).Page("https://www.v2ex.com/")
+
+	page.Element(`[href="/mission/daily"]`).Click()
 
 	el := page.ElementMatches("input", "领取 X 铜币", "span", "每日登录奖励已领取")
 
